@@ -1,21 +1,39 @@
 // client/src/App.tsx
 import React, { useState } from "react";
+import useCurrentUser from "./hooks/useCurrentUser";
 import LiveChart from "./components/LiveChart";
 import MiniSpark from "./components/MiniSpark";
+import LogoutButton from "./components/LogoutButton"; // added
 
 // ⬇⬇⬇ Use the same symbols as your server (AAPL, MSFT, GOOGL, TSLA, NVDA)
 const DEFAULT_SYMBOLS = ["AAPL", "MSFT", "GOOGL", "TSLA", "NVDA"];
 
 export default function App() {
+  // current user hook
+  const { user, loading: userLoading } = useCurrentUser();
+
   const [selected, setSelected] = useState<string>(DEFAULT_SYMBOLS[0]);
 
   return (
     <div style={{ padding: 20, minHeight: "100vh", background: "#071022", color: "#e6eef3" }}>
+      {/* Header */}
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
         <h1 style={{ margin: 0 }}>Live Stocks Dashboard</h1>
-        <div style={{ fontSize: 14, color: "#9aa4b2" }}>Realtime (Finnhub)</div>
+
+        {/* Show logged-in user + logout */}
+        {!userLoading && user ? (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 14, color: "#9aa4b2" }}>
+            <div>
+              Logged in as <b style={{ color: "#e6eef3" }}>{user.email}</b>
+            </div>
+            <LogoutButton />
+          </div>
+        ) : (
+          <div style={{ fontSize: 14, color: "#9aa4b2" }}>Realtime (Finnhub)</div>
+        )}
       </header>
 
+      {/* Layout */}
       <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: 20 }}>
         {/* Watchlist */}
         <aside style={{ background: "rgba(255,255,255,0.02)", padding: 12, borderRadius: 10 }}>
@@ -61,4 +79,5 @@ export default function App() {
     </div>
   );
 }
+
 
