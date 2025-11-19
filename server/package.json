@@ -3,22 +3,29 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "realtime": "node realtime.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "better-sqlite3": "^12.4.1",
     "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
-    "morgan": "^1.10.1"
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
+    "node-fetch": "^3.3.2",
+    "socket.io": "^4.8.1",
+    "ws": "^8.18.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
