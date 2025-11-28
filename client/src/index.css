@@ -21,3 +21,27 @@ input::placeholder {
   -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.06) inset !important;
   -webkit-text-fill-color: #00121a !important;
 }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+/* blob animations */
+@keyframes blob1 {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(18px) scale(1.06); opacity: 0.85; }
+  100% { transform: translateY(0) scale(1); opacity: 0.7; }
+}
+@keyframes blob2 {
+  0% { transform: translateX(0) scale(1); opacity: 0.6; }
+  50% { transform: translateX(-18px) scale(1.08); opacity: 0.75; }
+  100% { transform: translateX(0) scale(1); opacity: 0.6; }
+}
+.animate-blob-1 { animation: blob1 8s ease-in-out infinite; }
+.animate-blob-2 { animation: blob2 10s ease-in-out infinite; }
+
+/* small utility for heavy blur (Tailwind may not have exact blur value) */
+.blur-3xl { filter: blur(80px); }

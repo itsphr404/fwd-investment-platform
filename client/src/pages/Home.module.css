@@ -1,0 +1,53 @@
+/* small module to hold animations and hero overlay tweaks */
+
+.heroOverlay {
+  /* add subtle animated gradient shift */
+  animation: hueShift 18s linear infinite;
+}
+
+/* floating bubble shared class */
+.floatBubble {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.95;
+  transform-origin: center;
+  animation: floatUpDown 10s ease-in-out infinite,
+             slowRotate 28s linear infinite;
+  will-change: transform;
+}
+
+/* float effect */
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-16px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* slow rotation so gradients shimmer */
+@keyframes slowRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* gentle hue shift across the whole hero */
+@keyframes hueShift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(12deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
